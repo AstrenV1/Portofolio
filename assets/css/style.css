@@ -1,35 +1,31 @@
-/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* GLOBAL */
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #f4ecdd; /* crème doux */
-  color: #2b2b2b; /* texte anthracite */
+  background-color: #f6f2e7; /* light cream */
+  color: #2a2a2a; 
   line-height: 1.6;
 }
 
-/* HEADER */
+/* 🔥 Deep Cream Header */
 header {
-  background: #111111; /* noir mat style AJ1 */
+  background: #e8dcc4; /* deep cream */
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 4px solid #b71c1c; /* rouge Rare Air */
+  border-bottom: 2px solid #b02a2a; /* red Jordan accent */
 }
 
 .logo {
   font-size: 1.5rem;
-  color: #b71c1c; /* rouge Rare Air */
-  font-weight: bold;
+  color: #b02a2a; /* Jordan red */
 }
 
-/* NAVIGATION */
 nav ul {
   list-style: none;
   display: flex;
@@ -37,23 +33,16 @@ nav ul {
 }
 
 nav ul li a {
-  color: #f4ecdd; /* crème pour contraster le header sombre */
+  color: #3c3c3c;
   text-decoration: none;
-  transition: 0.3s;
+  transition: color 0.3s;
   font-weight: 500;
 }
 
 nav ul li a:hover {
-  color: #1a73e8; /* petit accent bleu */
+  color: #b02a2a; /* red accent */
 }
 
-nav ul li a.active {
-  color: #b71c1c; /* rouge Rare Air */
-  border-bottom: 2px solid #b71c1c;
-  padding-bottom: 3px;
-}
-
-/* HERO SECTION */
 .hero {
   height: 80vh;
   display: flex;
@@ -63,54 +52,36 @@ nav ul li a.active {
   text-align: center;
 }
 
-.hero h1 {
-  color: #111;
-}
-
 .hero h1 span {
-  color: #b71c1c; /* accent rouge */
+  color: #275fba; /* Jordan blue accent */
 }
 
 .btn {
   display: inline-block;
   margin-top: 1rem;
   padding: 0.6rem 1.2rem;
-  background-color: #b71c1c; /* bouton rouge Rare Air */
-  color: #f4ecdd; /* texte crème */
+  background-color: #b02a2a; /* red */
+  color: #fff;
   text-decoration: none;
   border-radius: 8px;
   font-weight: bold;
-  transition: 0.3s;
 }
 
 .btn:hover {
-  background-color: #1a73e8; /* accent bleu en hover */
+  background-color: #8a1f1f; /* darker red */
 }
 
-/* GLOBAL SECTION STYLE */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #e8dcc4; /* deep cream */
+  color: #4a4a4a;
+  margin-top: 2rem;
+  border-top: 2px solid #b02a2a;
+}
+
 section {
   padding: 2rem;
   max-width: 800px;
   margin: auto;
-  color: #2b2b2b;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 1rem;
-  background: #111111;
-  color: #f4ecdd;
-  margin-top: 2rem;
-  border-top: 4px solid #b71c1c;
-}
-
-/* OPTIONAL — cleaner lists inside centered sections */
-section ul {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-section ul li {
-  margin-bottom: 0.4rem;
 }
