@@ -6,12 +6,13 @@
   <title>Portfolio | Mora</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
 
 <header>
-  <nav>
+  <nav class="navbar">
     <h1 class="logo">Mora</h1>
-    <ul>
+    <ul class="nav-links">
       <li><a href="index.html" class="active">Accueil</a></li>
       <li><a href="a-propos.html">À propos</a></li>
       <li><a href="projets.html">Projets</a></li>
@@ -21,29 +22,33 @@
   </nav>
 </header>
 
-<main>
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Salut, moi c’est <span>Mora</span></h1>
-      <p>Futur Data Analyst et Entrepreneur</p>
-      <a href="projets.html" class="btn">Voir mes projets</a>
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-left">
+    <h1 class="title">
+      FUTUR <span>DATA ANALYST</span><br>
+      & DÉVELOPPEUR
+    </h1>
+
+    <p class="subtitle">
+      Étudiant en BTS SIO • Passionné de Data • Ambition d'intégrer une équipe de F1 puis créer ma propre entreprise.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="contact.html" class="btn-primary">Me contacter</a>
+      <a href="assets/files/CV.pdf" class="btn-secondary">Télécharger CV ⬇</a>
     </div>
-  </section>
+  </div>
 
-  <section class="about-preview">
-    <h2>À propos</h2>
-    <p>Je m'appelle <strong>Tol Mora</strong>, j’ai 20 ans et je vis en France depuis deux ans. 
-    Je suis actuellement étudiant en <strong>BTS SIO (option SLAM)</strong> au lycée Carcouet, après avoir obtenu un <strong>BTS Comptabilité et Gestion</strong>. 
-    Passionné par l’analyse de données, la programmation et la Formule 1, je souhaite travailler comme <strong>data analyst</strong> pour une équipe de F1 avant de créer ma propre entreprise.</p>
-    <a href="a-propos.html" class="btn">En savoir plus</a>
-  </section>
-</main>
+  <div class="hero-right">
+    <img src="assets/images/hero-illustration.png" alt="Illustration Mora" class="hero-img">
+  </div>
+</section>
 
-<footer>
-  <p>© 2025 Mora — Tous droits réservés.</p>
-</footer>
+<!-- SCROLL ICON -->
+<div class="scroll-down">
+  <span>↓</span>
+</div>
 
-<script src="assets/js/script.js"></script>
 </body>
 </html>
-
