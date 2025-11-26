@@ -1,184 +1,313 @@
-/* RESET */
+/* --- Global Styles --- */
+:root {
+    --dark-bg: #1A1A2E; /* Dark background color */
+    --primary-color: #53d2dc; /* Teal/Light Blue accent for links/buttons */
+    --secondary-color: #b8c4d6; /* Light gray text for contrast */
+    --text-color: #FFFFFF; /* White for primary text */
+    --highlight-bg: #2C2C47; /* Slightly lighter background for sections/cards */
+}
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  background-color: #0f141b; /* deep modern dark */
-  color: #f2f2f2;
-  line-height: 1.6;
+    font-family: 'Arial', sans-serif; /* Use a common font */
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    line-height: 1.6;
 }
 
-/* ---------------------- */
-/*      NAVIGATION        */
-/* ---------------------- */
-
-header {
-  width: 100%;
-  background: #0f141b;
-  padding: 1.5rem 4rem;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+h1, h2, h3 {
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* --- Header and Navigation --- */
+.header {
+    background-color: var(--dark-bg);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
-  color: #ffffff;
-  font-size: 1.6rem;
-  font-weight: 600;
-  letter-spacing: 1px;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
+.navbar a {
+    margin-left: 25px;
+    font-size: 1rem;
+    color: var(--secondary-color);
+    transition: color 0.3s;
 }
 
-.nav-links a {
-  text-decoration: none;
-  color: #cfd3d7;
-  font-weight: 500;
-  transition: 0.3s ease;
+.navbar a:hover {
+    color: var(--primary-color);
 }
 
-.nav-links a:hover,
-.nav-links .active {
-  color: #2a9df4; /* Jordan blue */
+/* --- Buttons (Actions) --- */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-right: 15px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-/* ---------------------- */
-/*       HERO SECTION      */
-/* ---------------------- */
+.btn.primary {
+    background-color: var(--primary-color);
+    color: var(--dark-bg);
+    border: 2px solid var(--primary-color);
+}
 
+.btn.primary:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+.btn.secondary {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 2px solid var(--text-color);
+}
+
+.btn.secondary:hover {
+    background-color: var(--text-color);
+    color: var(--dark-bg);
+}
+
+/* --- 1. Hero Section --- */
 .hero {
-  height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 4rem 7rem;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 0;
 }
 
-.hero-left {
-  max-width: 50%;
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
 }
 
-.title {
-  font-size: 3.3rem;
-  font-weight: 700;
-  line-height: 1.2;
-  color: #ffffff;
+.hero .text-content {
+    flex: 1;
 }
 
-.title span {
-  color: #2a9df4; /* blue accent */
+.hero h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 10px;
 }
 
-.subtitle {
-  margin-top: 1rem;
-  color: #b8bec4;
-  font-size: 1.1rem;
-  max-width: 500px;
+.hero .subtitle {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 30px;
 }
 
-/* BUTTONS */
-.btn-primary,
-.btn-secondary {
-  padding: 0.7rem 1.5rem;
-  display: inline-block;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: 0.3s ease;
+.hero .illustration {
+    flex: 1;
+    /* Placeholder for the illustration */
+    min-height: 300px; 
+    background-color: var(--highlight-bg); /* Placeholder background */
+    border-radius: 10px;
 }
 
-.btn-primary {
-  background: #b02a2a; /* Jordan red */
-  color: #fff;
-  margin-right: 1rem;
-}
-
-.btn-primary:hover {
-  background: #851c1c;
-}
-
-.btn-secondary {
-  background: #1d242f;
-  color: #cfd3d7;
-  border: 1px solid #2a9df4;
-}
-
-.btn-secondary:hover {
-  background: #2a9df4;
-  color: #fff;
-}
-
-/* HERO IMAGE */
-.hero-right .hero-img {
-  width: 420px;
-  animation: float 4s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0px); }
-}
-
-/* SCROLL ICON */
-.scroll-down {
-  text-align: center;
-  margin-top: -40px;
-}
-
-.scroll-down span {
-  font-size: 2rem;
-  color: #2a9df4;
-  animation: bounce 1.7s infinite;
+.scroll-down-indicator {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-top: 50px;
+    animation: bounce 2s infinite;
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
 }
 
-/* ---------------------- */
-/*        FOOTER          */
-/* ---------------------- */
-
-footer {
-  text-align: center;
-  padding: 1.5rem;
-  background: #0f141b;
-  color: #9aa1a7;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  margin-top: 3rem;
+/* --- General Section Styling --- */
+section {
+    padding: 100px 0;
+    background-color: var(--dark-bg);
 }
 
-/* ---------------------- */
-/*      RESPONSIVE        */
-/* ---------------------- */
+/* --- 2. About Me Section --- */
+.about {
+    background-color: var(--highlight-bg);
+    padding: 80px 0;
+}
 
-@media (max-width: 900px) {
-  .hero {
-    flex-direction: column;
+.about h2 {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.about-content {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.about .text-block {
+    flex: 2;
+}
+
+.about .graphic-element {
+    flex: 1;
+    min-height: 250px;
+    background-color: var(--dark-bg); /* Placeholder */
+    border-radius: 10px;
+}
+
+.read-more {
+    display: block;
+    margin-top: 20px;
+    font-style: italic;
+}
+
+/* --- 3. Certifications Section --- */
+.certifications {
+    background-color: var(--dark-bg);
+}
+
+.tabs-menu {
     text-align: center;
-    padding: 3rem 2rem;
-  }
+    margin-bottom: 40px;
+}
 
-  .hero-left {
-    max-width: 100%;
-  }
+.tab {
+    background-color: transparent;
+    border: none;
+    color: var(--secondary-color);
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: color 0.3s, border-bottom 0.3s;
+}
 
-  .hero-right {
-    margin-top: 2rem;
-  }
+.tab.active {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+    font-weight: bold;
+}
+
+.certifications-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 30px;
+}
+
+.cert-item {
+    background-color: var(--highlight-bg);
+    padding: 30px;
+    border-radius: 8px;
+    opacity: 0; /* Hidden by default for a tab effect */
+    display: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.cert-item.active-cert {
+    opacity: 1;
+    display: block;
+}
+
+/* Style only the active grid items */
+.certifications-grid > div:nth-child(1).active-cert {
+    grid-column: 1 / 2;
+}
+
+.certifications-grid > div:nth-child(2).active-cert {
+    grid-column: 2 / 3;
+}
+
+/* Place visual element across two columns for a cleaner layout if needed */
+.cert-visuals {
+    grid-column: 1 / -1; /* Spans across all columns */
+    min-height: 200px;
+    background-color: var(--dark-bg); /* Placeholder */
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: center;
+    line-height: 200px;
+    color: var(--secondary-color);
+    border: 1px dashed var(--secondary-color);
+}
+
+/* Hide the second year initially as it will be shown by a JS tab script */
+.cert-item.second-year {
+    display: none; 
+    opacity: 0;
+}
+
+/* --- 4. Contact Section --- */
+.contact {
+    text-align: center;
+    padding: 80px 0;
+    background-color: var(--highlight-bg);
+}
+
+.contact ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+    display: inline-block;
+    text-align: left;
+}
+
+.contact li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+/* --- Footer --- */
+footer {
+    padding: 20px 0;
+    text-align: center;
+    background-color: #0c0c16; /* Even darker shade */
+    color: var(--secondary-color);
+    border-top: 1px solid var(--highlight-bg);
 }
