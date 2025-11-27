@@ -1,101 +1,340 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tol Mora | Portfolio</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
+    <title>Tol Mora - Portfolio Développeur</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
 
-    <header class="header">
-        <div class="container">
-            <div class="logo">Tol Mora</div>
-            <nav class="navbar">
-                <a href="#home">Home</a>
-                <a href="#about">About me</a>
-                <a href="#certifications">Certifications</a>
-                <a href="#contact">Contact</a>
-            </nav>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+        
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6', // blue-500
+                        secondary: '#64748b', // slate-500
+                        dark: '#0f172a', // slate-900
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-dark text-slate-300 antialiased selection:bg-primary selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white tracking-tight">TM<span class="text-primary">.</span></a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#about" class="hover:text-primary transition-colors">À propos</a>
+                <a href="#skills" class="hover:text-primary transition-colors">Compétences</a>
+                <a href="#experience" class="hover:text-primary transition-colors">Expériences</a>
+                <a href="#contact" class="px-4 py-2 bg-primary text-white rounded-full hover:bg-blue-600 transition-all transform hover:scale-105">Me Contacter</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button onclick="toggleMenu()" class="md:hidden text-white focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-slate-800 border-b border-slate-700 md:hidden flex-col p-4 shadow-xl">
+            <a href="#about" class="block py-3 hover:text-primary" onclick="toggleMenu()">À propos</a>
+            <a href="#skills" class="block py-3 hover:text-primary" onclick="toggleMenu()">Compétences</a>
+            <a href="#experience" class="block py-3 hover:text-primary" onclick="toggleMenu()">Expériences</a>
+            <a href="#contact" class="block py-3 text-primary font-bold" onclick="toggleMenu()">Me Contacter</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <!-- Background Decor -->
+        <div class="absolute top-20 right-0 -mr-20 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
+
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="space-y-6 animate-fade-in-up">
+                <div class="inline-block px-3 py-1 text-xs font-medium tracking-wider text-primary uppercase bg-primary/10 rounded-full">
+                    Étudiant BTS SIO / SLAM
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight">
+                    Salut, je suis <br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Tol Mora</span>
+                </h1>
+                <p class="text-lg text-slate-400 max-w-lg leading-relaxed">
+                    Développeur junior passionné par la création de solutions web et logicielles. 
+                    Actuellement à la recherche d'une <strong>alternance ou d'un stage</strong> pour ma future L3 MIAGE.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#contact" class="px-6 py-3 bg-white text-dark font-semibold rounded-lg hover:bg-gray-100 transition-colors flex items-center gap-2">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                        Me contacter
+                    </a>
+                    <a href="#experience" class="px-6 py-3 border border-slate-700 text-white font-medium rounded-lg hover:bg-slate-800 transition-colors">
+                        Voir mon parcours
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Profile Visual -->
+            <div class="relative flex justify-center md:justify-end">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 bg-slate-800 rounded-2xl rotate-3 border border-slate-700 overflow-hidden shadow-2xl">
+                    <!-- Placeholder for User Image -->
+                    <div class="absolute inset-0 flex items-center justify-center bg-slate-900 text-slate-700">
+                        <i data-lucide="user" class="w-32 h-32 opacity-50"></i>
+                    </div>
+                    <!-- Ideally, replace the src below with your actual image path -->
+                    <!-- <img src="your-photo.jpg" alt="Tol Mora" class="object-cover w-full h-full opacity-90 hover:opacity-100 transition-opacity"> -->
+                </div>
+                <div class="absolute -bottom-6 -left-6 glass-card p-4 rounded-xl shadow-lg animate-bounce-slow">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-green-500/20 rounded-lg text-green-400">
+                            <i data-lucide="code-2" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-400">Actuellement</p>
+                            <p class="text-sm font-bold text-white">Open to Work</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
-    <section id="home" class="hero">
-        <div class="container hero-content">
-            <div class="text-content">
-                <h1>ÉTUDIANT BTS SIO SLAM</h1>
-                [cite_start]<p class="subtitle">À la recherche d'un stage / d'une alternance en L3 MIAGE [cite: 14]</p>
-                <div class="actions">
-                    <a href="#contact" class="btn primary">Contactez-moi</a>
-                    <a href="CV - Tol Mora.pdf" download class="btn secondary">Télécharger CV ↓</a>
-                </div>
-            </div>
-            <div class="illustration">
-                <img src="assets/images/designer-illustration.png" alt="Creative Illustration">
-            </div>
-        </div>
-        <div class="scroll-down-indicator">↓</div>
-    </section>
-
-    <section id="about" class="about">
-        <div class="container">
-            <h2>À propos de moi</h2>
-            <div class="about-content">
-                <div class="text-block">
-                    [cite_start]<p>Actuellement en **BTS Services Informatiques aux Organisations (SLAM)**, je suis passionné par le développement d'applications[cite: 16, 17]. [cite_start]Mon parcours inclut des expériences en **fabrication de sites internet** (HTML/CSS) [cite: 28] [cite_start]et des bases solides en comptabilité et gestion[cite: 20, 29, 31].</p>
-                    [cite_start]<p>Je suis motivé à explorer de nouveaux domaines, notamment la cybersécurité, tout en poursuivant mon objectif d'intégrer une **L3 MIAGE**[cite: 14].</p>
-                    <a href="#certifications" class="read-more">Voir mes certifications...</a>
-                </div>
-                <div class="graphic-element">
-                    <img src="assets/images/about-graphic.png" alt="About graphic">
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-slate-900/50">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-white mb-8 flex items-center gap-3">
+                <i data-lucide="user" class="text-primary"></i> À propos de moi
+            </h2>
+            <div class="glass-card p-8 rounded-2xl">
+                <p class="text-slate-300 leading-relaxed mb-6">
+                    Après un parcours initial en <strong>Comptabilité et Gestion</strong>, j'ai découvert une passion pour la logique informatique et l'automatisation. J'ai décidé de pivoter vers le développement en intégrant un <strong>BTS SIO (Services Informatiques aux Organisations)</strong>, option SLAM (Solutions Logicielles et Applications Métiers).
+                </p>
+                <p class="text-slate-300 leading-relaxed">
+                    Cette double compétence me permet de comprendre non seulement le "comment" technique, mais aussi le "pourquoi" métier derrière chaque ligne de code. Je suis rigoureux, curieux, et j'aime relever des défis techniques.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 border-t border-slate-700/50 pt-8">
+                    <div>
+                        <h3 class="text-white font-semibold mb-1">Localisation</h3>
+                        <p class="text-sm text-slate-400">Le Pallet (44330), France</p>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-semibold mb-1">Langues</h3>
+                        <p class="text-sm text-slate-400">Anglais (C1), Espagnol (B1), Français</p>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-semibold mb-1">Intérêts</h3>
+                        <p class="text-sm text-slate-400">Sport, Cinéma, Cuisine</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="certifications" class="certifications">
-        <div class="container">
-            <h2>Mes Certifications</h2>
-            <div class="tabs-menu">
-                <button class="tab active">Première Année</button>
-                <button class="tab">Deuxième Année</button>
-                </div>
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center">Mes Compétences Techniques</h2>
             
-            <div class="certifications-grid">
-                <div class="cert-item first-year active-cert">
-                    <h3>Première Année</h3>
-                    <p>Je découvre les cours en ligne, les formations pratiques et la possibilité de me perfectionner dans différents domaines. C'est une nouvelle aventure qui me motive énormément.</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1: Dev -->
+                <div class="bg-slate-800/50 p-6 rounded-xl hover:bg-slate-800 transition-colors border border-slate-700">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-400 mb-4">
+                        <i data-lucide="terminal-square" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Développement</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">HTML5</span>
+                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">CSS3</span>
+                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">PHP</span>
+                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">C#</span>
+                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">Python</span>
+                    </div>
                 </div>
-                
-                <div class="cert-item second-year">
-                    <h3>Deuxième Année</h3>
-                    <p>Cette année, j’ai commencé à explorer la cybersécurité avec **TryHackMe**. J’ai acquis quelques bases et je compte poursuivre avec d’autres certifications pour renforcer mes compétences techniques et élargir mon profil professionnel.</p>
+
+                <!-- Card 2: Tools & Methods -->
+                <div class="bg-slate-800/50 p-6 rounded-xl hover:bg-slate-800 transition-colors border border-slate-700">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-400 mb-4">
+                        <i data-lucide="git-branch" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Outils & Méthodes</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">Git / GitHub</span>
+                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">Visual Studio</span>
+                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">Unity</span>
+                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">Scrum</span>
+                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">UML / Merise</span>
+                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">Trello</span>
+                    </div>
                 </div>
+
+                <!-- Card 3: Data & Others -->
+                <div class="bg-slate-800/50 p-6 rounded-xl hover:bg-slate-800 transition-colors border border-slate-700">
+                    <div class="w-12 h-12 bg-emerald-500/20 rounded-lg flex items-center justify-center text-emerald-400 mb-4">
+                        <i data-lucide="database" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Données & Gestion</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">SQL Server</span>
+                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">MySQL</span>
+                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">EBP</span>
+                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">Libre Office</span>
+                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">Maintenance Info</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-slate-900/50">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-white mb-12 flex items-center gap-3">
+                <i data-lucide="briefcase" class="text-primary"></i> Parcours & Expériences
+            </h2>
+
+            <div class="space-y-8 border-l-2 border-slate-700 ml-3 pl-8 relative">
                 
-                <div class="cert-visuals">
-                                    </div>
+                <!-- Item 1 -->
+                <div class="relative">
+                    <span class="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-slate-900 bg-primary"></span>
+                    <h3 class="text-xl font-bold text-white">Création de Site Internet</h3>
+                    <div class="flex flex-col sm:flex-row sm:items-center text-sm text-slate-400 mb-2">
+                        <span class="font-semibold text-primary">EURL Martin</span>
+                        <span class="mx-2 hidden sm:inline">•</span>
+                        <span>Mai - Juin 2025</span>
+                        <span class="mx-2 hidden sm:inline">•</span>
+                        <span>Nantes, France</span>
+                    </div>
+                    <p class="text-slate-300">Conception et développement d'un site vitrine utilisant HTML et CSS. Analyse des besoins client et mise en place de la structure visuelle.</p>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="relative">
+                    <span class="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-slate-900 bg-slate-600"></span>
+                    <h3 class="text-xl font-bold text-white">BTS SIO (SLAM)</h3>
+                    <div class="flex flex-col sm:flex-row sm:items-center text-sm text-slate-400 mb-2">
+                        <span class="font-semibold">Lycée Carcouet</span>
+                        <span class="mx-2 hidden sm:inline">•</span>
+                        <span>2024 - Présent</span>
+                    </div>
+                    <p class="text-slate-300">Formation spécialisée en développement logiciel, algorithmique, et gestion de projet informatique.</p>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="relative">
+                    <span class="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-slate-900 bg-slate-600"></span>
+                    <h3 class="text-xl font-bold text-white">Assistant Comptable</h3>
+                    <div class="flex flex-col sm:flex-row sm:items-center text-sm text-slate-400 mb-2">
+                        <span class="font-semibold">Soniso 44</span>
+                        <span class="mx-2 hidden sm:inline">•</span>
+                        <span>Jan - Fév 2024</span>
+                    </div>
+                    <p class="text-slate-300">Analyse de la rentabilité de SCI. Travail de rigueur et d'analyse de données chiffrées.</p>
+                </div>
+
+                 <!-- Item 4 -->
+                 <div class="relative">
+                    <span class="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-slate-900 bg-slate-600"></span>
+                    <h3 class="text-xl font-bold text-white">Technicien / Vendeur</h3>
+                    <div class="flex flex-col sm:flex-row sm:items-center text-sm text-slate-400 mb-2">
+                        <span class="font-semibold">Boutique de téléphonie</span>
+                        <span class="mx-2 hidden sm:inline">•</span>
+                        <span>Juin - Août 2019</span>
+                        <span class="mx-2 hidden sm:inline">•</span>
+                        <span>Cambodge</span>
+                    </div>
+                    <p class="text-slate-300">Réparation de téléphones et gestion des données clients. Première expérience technique et relation client.</p>
+                </div>
 
             </div>
         </div>
     </section>
-    
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Contact</h2>
-            <p>N'hésitez pas à me contacter pour toute opportunité de stage ou d'alternance.</p>
-            <ul>
-                [cite_start]<li><strong>Téléphone:</strong> 07 49 68 05 89 [cite: 2]</li>
-                [cite_start]<li><strong>Email:</strong> tolmora.pro@gmail.com [cite: 3]</li>
-                [cite_start]<li><strong>Adresse:</strong> 3, Sanguèze, Le Pallet, 44330 [cite: 4]</li>
-            </ul>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">Travaillons ensemble</h2>
+            <p class="text-slate-400 mb-10 max-w-xl mx-auto">
+                Je suis actuellement à la recherche d'une opportunité en alternance ou d'un stage pour poursuivre mon parcours en <strong>L3 MIAGE</strong>. N'hésitez pas à me contacter !
+            </p>
+            
+            <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                <a href="mailto:tolmora.pro@gmail.com" class="p-6 bg-slate-800 rounded-xl hover:bg-primary hover:text-white transition-all group border border-slate-700">
+                    <i data-lucide="mail" class="w-8 h-8 mx-auto mb-3 text-primary group-hover:text-white transition-colors"></i>
+                    <h3 class="font-semibold mb-1">Email</h3>
+                    <p class="text-sm opacity-80">tolmora.pro@gmail.com</p>
+                </a>
+                
+                <a href="tel:0749680589" class="p-6 bg-slate-800 rounded-xl hover:bg-primary hover:text-white transition-all group border border-slate-700">
+                    <i data-lucide="phone" class="w-8 h-8 mx-auto mb-3 text-primary group-hover:text-white transition-colors"></i>
+                    <h3 class="font-semibold mb-1">Téléphone</h3>
+                    <p class="text-sm opacity-80">07 49 68 05 89</p>
+                </a>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Tol Mora | Développé avec ☕ et HTML/CSS</p>
-        </div>
+    <!-- Footer -->
+    <footer class="py-8 border-t border-slate-800 text-center text-slate-500 text-sm">
+        <p>&copy; 2025 Tol Mora. Tous droits réservés.</p>
     </footer>
 
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                navbar.classList.add('bg-slate-900/90', 'backdrop-blur-md', 'shadow-lg');
+            } else {
+                navbar.classList.remove('bg-slate-900/90', 'backdrop-blur-md', 'shadow-lg');
+            }
+        });
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        }
+    </script>
 </body>
 </html>
