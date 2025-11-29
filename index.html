@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
         body {
             font-family: 'Inter', sans-serif;
@@ -29,9 +29,16 @@
         }
         
         .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(10px);
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(to right, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     </style>
     <script>
@@ -43,6 +50,15 @@
                         primary: '#3b82f6', // blue-500
                         secondary: '#64748b', // slate-500
                         dark: '#0f172a', // slate-900
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
                     }
                 }
             }
@@ -52,9 +68,9 @@
 <body class="bg-dark text-slate-300 antialiased selection:bg-primary selection:text-white">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 border-b border-transparent" id="navbar">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-white tracking-tight">TM<span class="text-primary">.</span></a>
+            <a href="#" class="text-xl font-bold text-white tracking-tight hover:opacity-80 transition-opacity">TM<span class="text-primary">.</span></a>
             
             <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-8 text-sm font-medium">
@@ -62,70 +78,78 @@
                 <a href="#skills" class="hover:text-primary transition-colors">Compétences</a>
                 <a href="#certifications" class="hover:text-primary transition-colors">Certifications</a>
                 <a href="#experience" class="hover:text-primary transition-colors">Expériences</a>
-                <a href="#contact" class="px-4 py-2 bg-primary text-white rounded-full hover:bg-blue-600 transition-all transform hover:scale-105">Me Contacter</a>
+                <a href="#contact" class="px-5 py-2.5 bg-primary/10 text-primary border border-primary/20 rounded-full hover:bg-primary hover:text-white transition-all">Me Contacter</a>
             </div>
 
             <!-- Mobile Menu Button -->
-            <button onclick="toggleMenu()" class="md:hidden text-white focus:outline-none">
+            <button onclick="toggleMenu()" class="md:hidden text-white focus:outline-none p-2 hover:bg-slate-800 rounded-lg transition-colors">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </div>
 
         <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-slate-800 border-b border-slate-700 md:hidden flex-col p-4 shadow-xl">
-            <a href="#about" class="block py-3 hover:text-primary" onclick="toggleMenu()">À propos</a>
-            <a href="#skills" class="block py-3 hover:text-primary" onclick="toggleMenu()">Compétences</a>
-            <a href="#certifications" class="block py-3 hover:text-primary" onclick="toggleMenu()">Certifications</a>
-            <a href="#experience" class="block py-3 hover:text-primary" onclick="toggleMenu()">Expériences</a>
-            <a href="#contact" class="block py-3 text-primary font-bold" onclick="toggleMenu()">Me Contacter</a>
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-slate-900/95 backdrop-blur-xl border-b border-slate-700 md:hidden flex-col p-4 shadow-xl">
+            <a href="#about" class="block py-4 px-4 hover:bg-slate-800 rounded-lg transition-colors" onclick="toggleMenu()">À propos</a>
+            <a href="#skills" class="block py-4 px-4 hover:bg-slate-800 rounded-lg transition-colors" onclick="toggleMenu()">Compétences</a>
+            <a href="#certifications" class="block py-4 px-4 hover:bg-slate-800 rounded-lg transition-colors" onclick="toggleMenu()">Certifications</a>
+            <a href="#experience" class="block py-4 px-4 hover:bg-slate-800 rounded-lg transition-colors" onclick="toggleMenu()">Expériences</a>
+            <a href="#contact" class="block py-4 px-4 text-primary font-bold" onclick="toggleMenu()">Me Contacter</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <header class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-        <!-- Background Decor -->
-        <div class="absolute top-20 right-0 -mr-20 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 -ml-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
+        <!-- Subtle Background Decor -->
+        <div class="absolute top-0 right-0 -mr-20 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-[100px]"></div>
 
-        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
-            <div class="space-y-6 animate-fade-in-up">
-                <div class="inline-block px-3 py-1 text-xs font-medium tracking-wider text-primary uppercase bg-primary/10 rounded-full">
+        <div class="max-w-6xl w-full mx-auto px-6 grid md:grid-cols-2 gap-16 items-center relative z-10">
+            <!-- Text Content -->
+            <div class="space-y-8 animate-fade-in-up order-2 md:order-1">
+                <div class="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold tracking-wide text-blue-300 uppercase bg-blue-500/10 border border-blue-500/20 rounded-full">
+                    <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
                     Étudiant BTS SIO / SLAM
                 </div>
-                <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight">
-                    Bonjour, je m'appel <br/>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Mora (Tol Mora)</span>
+                
+                <h1 class="text-5xl md:text-7xl font-bold text-white leading-[1.1] tracking-tight">
+                    Bonjour, je m'appelle <br/>
+                    <span class="text-gradient">Tol Mora</span>
                 </h1>
-                <p class="text-lg text-slate-400 max-w-lg leading-relaxed">
-                    Développeur junior passionné par la création de solutions web et logicielles. 
-                    Actuellement à la recherche d'une <strong>alternance ou d'un stage</strong> pour ma future L3 MIAGE.
+                
+                <p class="text-lg text-slate-400 max-w-lg leading-relaxed font-light">
+                    Développeur junior passionné par la conception d'applications web et logicielles. 
+                    Actuellement en quête d'une <strong class="text-white font-medium">alternance ou d'un stage</strong> pour ma future L3 MIAGE.
                 </p>
-                <div class="flex flex-wrap gap-4 pt-4">
-                    <a href="#contact" class="px-6 py-3 bg-white text-dark font-semibold rounded-lg hover:bg-gray-100 transition-colors flex items-center gap-2">
+                
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="#contact" class="px-8 py-4 bg-white text-slate-900 font-semibold rounded-xl hover:bg-slate-100 transition-all transform hover:-translate-y-1 shadow-lg shadow-white/5 flex items-center gap-2">
                         <i data-lucide="mail" class="w-4 h-4"></i>
                         Me contacter
                     </a>
-                    <a href="#experience" class="px-6 py-3 border border-slate-700 text-white font-medium rounded-lg hover:bg-slate-800 transition-colors">
+                    <a href="#experience" class="px-8 py-4 glass-card text-white font-medium rounded-xl hover:bg-slate-800/50 transition-all transform hover:-translate-y-1">
                         Voir mon parcours
                     </a>
                 </div>
             </div>
             
             <!-- Profile Visual -->
-            <div class="relative flex justify-center md:justify-end">
-                <!-- Removed card styling (bg, border, rotate) and increased size slightly for the character -->
-                <div class="relative w-64 h-64 md:w-96 md:h-96">
-                    <img src="assets/images/hi1.png" alt="Tol Mora" class="object-contain w-full h-full drop-shadow-2xl hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'absolute inset-0 flex items-center justify-center bg-slate-900 text-slate-700 rounded-2xl\'><i data-lucide=\'user\' class=\'w-32 h-32 opacity-50\'></i></div>'">
+            <div class="relative flex flex-col items-center justify-center order-1 md:order-2">
+                <div class="relative w-72 h-72 md:w-[450px] md:h-[450px] animate-float">
+                    <!-- Glow behind image -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-full blur-3xl opacity-50"></div>
+                    
+                    <img src="assets/images/hi1.png" alt="Tol Mora" class="relative z-10 object-contain w-full h-full drop-shadow-2xl hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'absolute inset-0 flex items-center justify-center bg-slate-800/50 rounded-full\'><i data-lucide=\'user\' class=\'w-32 h-32 opacity-20\'></i></div>'">
                 </div>
-                <div class="absolute bottom-0 left-0 md:-bottom-6 md:-left-6 glass-card p-4 rounded-xl shadow-lg animate-bounce-slow">
-                    <div class="flex items-center gap-3">
-                        <div class="p-2 bg-green-500/20 rounded-lg text-green-400">
-                            <i data-lucide="code-2" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <p class="text-xs text-slate-400">Actuellement</p>
-                            <p class="text-sm font-bold text-white">Open to Work</p>
-                        </div>
+                
+                <!-- Status Badge - Centered under image -->
+                <div class="glass-card px-6 py-3 rounded-full shadow-xl -mt-8 relative z-20 flex items-center gap-3 border border-emerald-500/20 bg-slate-900/60">
+                    <div class="relative flex h-3 w-3">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Actuellement</span>
+                        <span class="text-sm font-bold text-white">Open to Work</span>
                     </div>
                 </div>
             </div>
@@ -133,30 +157,42 @@
     </header>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-slate-900/50">
+    <section id="about" class="py-32 relative">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-3xl font-bold text-white mb-8 flex items-center gap-3">
-                <i data-lucide="user" class="text-primary"></i> À propos de moi
-            </h2>
-            <div class="glass-card p-8 rounded-2xl">
-                <p class="text-slate-300 leading-relaxed mb-6">
-                    Après un parcours initial en <strong>Comptabilité et Gestion</strong>, j'ai découvert une passion pour la logique informatique et l'automatisation. J'ai décidé de pivoter vers le développement en intégrant un <strong>BTS SIO (Services Informatiques aux Organisations)</strong>, option SLAM (Solutions Logicielles et Applications Métiers).
-                </p>
-                <p class="text-slate-300 leading-relaxed">
-                    Cette double compétence me permet de comprendre non seulement le "comment" technique, mais aussi le "pourquoi" métier derrière chaque ligne de code. Je suis rigoureux, curieux, et j'aime relever des défis techniques.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 border-t border-slate-700/50 pt-8">
+            <div class="flex items-center gap-4 mb-12">
+                <span class="h-px w-12 bg-primary/50"></span>
+                <h2 class="text-3xl font-bold text-white">À propos de moi</h2>
+            </div>
+
+            <div class="glass-card p-10 rounded-3xl relative overflow-hidden group">
+                <!-- Hover Glow Effect -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-500 -mr-16 -mt-16"></div>
+                
+                <div class="relative z-10 space-y-6">
+                    <p class="text-slate-300 leading-relaxed text-lg font-light">
+                        Mon parcours a débuté dans les chiffres avec un cursus en <strong class="text-white font-medium">Comptabilité et Gestion</strong>. C'est là que j'ai réalisé que ce qui me passionnait vraiment n'était pas seulement le résultat, mais la logique et l'automatisation derrière chaque processus.
+                    </p>
+                    <p class="text-slate-300 leading-relaxed text-lg font-light">
+                        J'ai donc opéré un pivot stratégique vers le développement en intégrant un <strong class="text-white font-medium">BTS SIO (Option SLAM)</strong>. Aujourd'hui, je combine ma rigueur analytique avec ma créativité technique pour concevoir des solutions logicielles pertinentes et efficaces.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12 pt-10 border-t border-slate-700/30">
                     <div>
-                        <h3 class="text-white font-semibold mb-1">Localisation</h3>
-                        <p class="text-sm text-slate-400">Le Pallet (44330), France</p>
+                        <h3 class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">Localisation</h3>
+                        <p class="text-white font-medium">Le Pallet (44), France</p>
                     </div>
                     <div>
-                        <h3 class="text-white font-semibold mb-1">Langues</h3>
-                        <p class="text-sm text-slate-400">Anglais (C1), Espagnol (B1), Français</p>
+                        <h3 class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">Niveau Anglais</h3>
+                        <p class="text-white font-medium">C1 Advanced</p>
                     </div>
                     <div>
-                        <h3 class="text-white font-semibold mb-1">Intérêts</h3>
-                        <p class="text-sm text-slate-400">Sport, Cinéma, Cuisine</p>
+                        <h3 class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">Disponibilité</h3>
+                        <p class="text-emerald-400 font-medium">Immédiate</p>
+                    </div>
+                    <div>
+                        <h3 class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">Centres d'intérêt</h3>
+                        <p class="text-white font-medium">Sport, Cinéma, Cuisine</p>
                     </div>
                 </div>
             </div>
@@ -166,52 +202,50 @@
     <!-- Skills Section -->
     <section id="skills" class="py-20">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-bold text-white mb-12 text-center">Mes Compétences Techniques</h2>
+            <h2 class="text-3xl font-bold text-white mb-16 text-center">Mes Compétences Techniques</h2>
             
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-3 gap-6">
                 <!-- Card 1: Dev -->
-                <div class="bg-slate-800/50 p-6 rounded-xl hover:bg-slate-800 transition-colors border border-slate-700">
-                    <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-400 mb-4">
-                        <i data-lucide="terminal-square" class="w-6 h-6"></i>
+                <div class="glass-card p-8 rounded-2xl hover:bg-slate-800/50 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-14 h-14 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="code-2" class="w-7 h-7"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-4">Développement</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">HTML5</span>
-                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">CSS3</span>
-                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">PHP</span>
-                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">C#</span>
-                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">Python</span>
+                        <span class="px-3 py-1 bg-slate-800/80 border border-slate-700 text-xs font-medium rounded-full text-slate-300">HTML5</span>
+                        <span class="px-3 py-1 bg-slate-800/80 border border-slate-700 text-xs font-medium rounded-full text-slate-300">CSS3</span>
+                        <span class="px-3 py-1 bg-slate-800/80 border border-slate-700 text-xs font-medium rounded-full text-slate-300">PHP</span>
+                        <span class="px-3 py-1 bg-slate-800/80 border border-slate-700 text-xs font-medium rounded-full text-slate-300">C#</span>
+                        <span class="px-3 py-1 bg-slate-800/80 border border-slate-700 text-xs font-medium rounded-full text-slate-300">Python</span>
                     </div>
                 </div>
 
                 <!-- Card 2: Tools & Methods -->
-                <div class="bg-slate-800/50 p-6 rounded-xl hover:bg-slate-800 transition-colors border border-slate-700">
-                    <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-400 mb-4">
-                        <i data-lucide="git-branch" class="w-6 h-6"></i>
+                <div class="glass-card p-8 rounded-2xl hover:bg-slate-800/50 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-14 h-14 bg-purple-500/10 rounded-xl flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="git-branch" class="w-7 h-7"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-4">Outils & Méthodes</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">Git / GitHub</span>
-                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">Visual Studio</span>
-                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">Unity</span>
-                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">Scrum</span>
-                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">UML / Merise</span>
-                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">Trello</span>
+                        <span class="px-3 py-1 bg-slate-800/80 border border-slate-700 text-xs font-medium rounded-full text-slate-300">Git / GitHub</span>
+                        <span class="px-3 py-1 bg-slate-800/80 border border-slate-700 text-xs font-medium rounded-full text-slate-300">Visual Studio</span>
+                        <span class="px-3 py-1 bg-slate-800/80 border border-slate-700 text-xs font-medium rounded-full text-slate-300">Unity</span>
+                        <span class="px-3 py-1 bg-slate-800/80 border border-slate-700 text-xs font-medium rounded-full text-slate-300">Scrum</span>
+                        <span class="px-3 py-1 bg-slate-800/80 border border-slate-700 text-xs font-medium rounded-full text-slate-300">UML</span>
                     </div>
                 </div>
 
                 <!-- Card 3: Data & Others -->
-                <div class="bg-slate-800/50 p-6 rounded-xl hover:bg-slate-800 transition-colors border border-slate-700">
-                    <div class="w-12 h-12 bg-emerald-500/20 rounded-lg flex items-center justify-center text-emerald-400 mb-4">
-                        <i data-lucide="database" class="w-6 h-6"></i>
+                <div class="glass-card p-8 rounded-2xl hover:bg-slate-800/50 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-14 h-14 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="database" class="w-7 h-7"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-4">Données & Gestion</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">SQL Server</span>
-                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">MySQL</span>
-                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">EBP</span>
-                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">Libre Office</span>
-                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-200">Maintenance Info</span>
+                        <span class="px-3 py-1 bg-slate-800/80 border border-slate-700 text-xs font-medium rounded-full text-slate-300">SQL Server</span>
+                        <span class="px-3 py-1 bg-slate-800/80 border border-slate-700 text-xs font-medium rounded-full text-slate-300">MySQL</span>
+                        <span class="px-3 py-1 bg-slate-800/80 border border-slate-700 text-xs font-medium rounded-full text-slate-300">EBP</span>
+                        <span class="px-3 py-1 bg-slate-800/80 border border-slate-700 text-xs font-medium rounded-full text-slate-300">Libre Office</span>
                     </div>
                 </div>
             </div>
@@ -227,17 +261,17 @@
             
             <div class="grid md:grid-cols-2 gap-6">
                 <!-- Year 1 -->
-                <div class="glass-card p-8 rounded-2xl border-l-4 border-primary h-full">
+                <div class="glass-card p-8 rounded-2xl border-l-4 border-primary h-full hover:bg-slate-800/50 transition-colors">
                     <div class="flex flex-col gap-6 h-full justify-between">
-                        <div class="space-y-3">
+                        <div class="space-y-4">
                             <h3 class="text-2xl font-bold text-white">Première Année</h3>
-                            <p class="text-slate-300 leading-relaxed text-lg">
+                            <p class="text-slate-300 leading-relaxed text-lg font-light">
                                 Passionné par le numérique, j'ai souhaité explorer plus en profondeur le monde du développement pour comprendre les mécanismes de création d'applications et d'environnements interactifs.
                             </p>
                         </div>
                         <div>
-                            <a href="unity.html" class="inline-flex items-center gap-2 px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-lg border border-slate-600 transition-all hover:scale-105 hover:border-primary">
-                                <i data-lucide="box" class="w-5 h-5"></i>
+                            <a href="unity.html" class="inline-flex items-center gap-2 px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-medium rounded-xl border border-slate-600/50 transition-all hover:scale-105 hover:border-primary group">
+                                <i data-lucide="box" class="w-5 h-5 group-hover:text-primary transition-colors"></i>
                                 Unity
                             </a>
                         </div>
@@ -245,17 +279,17 @@
                 </div>
 
                 <!-- Year 2 -->
-                <div class="glass-card p-8 rounded-2xl border-l-4 border-emerald-500 h-full">
+                <div class="glass-card p-8 rounded-2xl border-l-4 border-emerald-500 h-full hover:bg-slate-800/50 transition-colors">
                     <div class="flex flex-col gap-6 h-full justify-between">
-                        <div class="space-y-3">
+                        <div class="space-y-4">
                             <h3 class="text-2xl font-bold text-white">Deuxième Année</h3>
-                            <p class="text-slate-300 leading-relaxed text-lg">
+                            <p class="text-slate-300 leading-relaxed text-lg font-light">
                                 En deuxième année, j'ai orienté mes compétences vers la cybersécurité. J'ai acquis des bases solides en tests d'intrusion et sécurisation des réseaux grâce à des formations pratiques.
                             </p>
                         </div>
                         <div>
-                            <a href="tryhackme.html" class="inline-flex items-center gap-2 px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-lg border border-slate-600 transition-all hover:scale-105 hover:border-emerald-500">
-                                <i data-lucide="shield" class="w-5 h-5"></i>
+                            <a href="tryhackme.html" class="inline-flex items-center gap-2 px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-medium rounded-xl border border-slate-600/50 transition-all hover:scale-105 hover:border-emerald-500 group">
+                                <i data-lucide="shield" class="w-5 h-5 group-hover:text-emerald-500 transition-colors"></i>
                                 TryHackMe
                             </a>
                         </div>
@@ -268,62 +302,61 @@
     <!-- Experience Section -->
     <section id="experience" class="py-20">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-3xl font-bold text-white mb-12 flex items-center gap-3">
-                <i data-lucide="briefcase" class="text-primary"></i> Parcours & Expériences
-            </h2>
+            <div class="flex items-center gap-4 mb-16">
+                <span class="h-px w-12 bg-primary/50"></span>
+                <h2 class="text-3xl font-bold text-white">Parcours & Expériences</h2>
+            </div>
 
-            <div class="space-y-8 border-l-2 border-slate-700 ml-3 pl-8 relative">
+            <div class="space-y-12 border-l border-slate-800 ml-3 pl-10 relative">
                 
                 <!-- Item 1 -->
-                <div class="relative">
-                    <span class="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-slate-900 bg-primary"></span>
-                    <h3 class="text-xl font-bold text-white">Création de Site Internet</h3>
-                    <div class="flex flex-col sm:flex-row sm:items-center text-sm text-slate-400 mb-2">
-                        <span class="font-semibold text-primary">EURL Martin</span>
-                        <span class="mx-2 hidden sm:inline">•</span>
+                <div class="relative group">
+                    <span class="absolute -left-[45px] top-1.5 h-3 w-3 rounded-full border border-primary bg-slate-900 group-hover:bg-primary transition-colors shadow-[0_0_0_4px_rgba(15,23,42,1)]"></span>
+                    <h3 class="text-xl font-bold text-white mb-1">Création de Site Internet</h3>
+                    <div class="flex flex-col sm:flex-row sm:items-center text-sm text-slate-500 mb-4 font-medium">
+                        <span class="text-primary">EURL Martin</span>
+                        <span class="mx-2 hidden sm:inline text-slate-700">•</span>
                         <span>Mai - Juin 2025</span>
-                        <span class="mx-2 hidden sm:inline">•</span>
+                        <span class="mx-2 hidden sm:inline text-slate-700">•</span>
                         <span>Nantes, France</span>
                     </div>
-                    <p class="text-slate-300">Conception et développement d'un site vitrine utilisant HTML et CSS. Analyse des besoins client et mise en place de la structure visuelle.</p>
+                    <p class="text-slate-300 font-light leading-relaxed">Conception et développement d'un site vitrine utilisant HTML et CSS. Analyse des besoins client et mise en place de la structure visuelle.</p>
                 </div>
 
                 <!-- Item 2 -->
-                <div class="relative">
-                    <span class="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-slate-900 bg-slate-600"></span>
-                    <h3 class="text-xl font-bold text-white">BTS SIO (SLAM)</h3>
-                    <div class="flex flex-col sm:flex-row sm:items-center text-sm text-slate-400 mb-2">
-                        <span class="font-semibold">Lycée Carcouet</span>
-                        <span class="mx-2 hidden sm:inline">•</span>
+                <div class="relative group">
+                    <span class="absolute -left-[45px] top-1.5 h-3 w-3 rounded-full border border-slate-600 bg-slate-900 group-hover:bg-slate-600 transition-colors shadow-[0_0_0_4px_rgba(15,23,42,1)]"></span>
+                    <h3 class="text-xl font-bold text-white mb-1">BTS SIO (SLAM)</h3>
+                    <div class="flex flex-col sm:flex-row sm:items-center text-sm text-slate-500 mb-4 font-medium">
+                        <span class="">Lycée Carcouet</span>
+                        <span class="mx-2 hidden sm:inline text-slate-700">•</span>
                         <span>2024 - Présent</span>
                     </div>
-                    <p class="text-slate-300">Formation spécialisée en développement logiciel, algorithmique, et gestion de projet informatique.</p>
+                    <p class="text-slate-300 font-light leading-relaxed">Formation spécialisée en développement logiciel, algorithmique, et gestion de projet informatique.</p>
                 </div>
 
                 <!-- Item 3 -->
-                <div class="relative">
-                    <span class="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-slate-900 bg-slate-600"></span>
-                    <h3 class="text-xl font-bold text-white">Assistant Comptable</h3>
-                    <div class="flex flex-col sm:flex-row sm:items-center text-sm text-slate-400 mb-2">
-                        <span class="font-semibold">Soniso 44</span>
-                        <span class="mx-2 hidden sm:inline">•</span>
+                <div class="relative group">
+                    <span class="absolute -left-[45px] top-1.5 h-3 w-3 rounded-full border border-slate-600 bg-slate-900 group-hover:bg-slate-600 transition-colors shadow-[0_0_0_4px_rgba(15,23,42,1)]"></span>
+                    <h3 class="text-xl font-bold text-white mb-1">Assistant Comptable</h3>
+                    <div class="flex flex-col sm:flex-row sm:items-center text-sm text-slate-500 mb-4 font-medium">
+                        <span class="">Soniso 44</span>
+                        <span class="mx-2 hidden sm:inline text-slate-700">•</span>
                         <span>Jan - Fév 2024</span>
                     </div>
-                    <p class="text-slate-300">Analyse de la rentabilité de SCI. Travail de rigueur et d'analyse de données chiffrées.</p>
+                    <p class="text-slate-300 font-light leading-relaxed">Analyse de la rentabilité de SCI. Travail de rigueur et d'analyse de données chiffrées.</p>
                 </div>
 
                  <!-- Item 4 -->
-                 <div class="relative">
-                    <span class="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-slate-900 bg-slate-600"></span>
-                    <h3 class="text-xl font-bold text-white">Technicien / Vendeur</h3>
-                    <div class="flex flex-col sm:flex-row sm:items-center text-sm text-slate-400 mb-2">
-                        <span class="font-semibold">Boutique de téléphonie</span>
-                        <span class="mx-2 hidden sm:inline">•</span>
+                 <div class="relative group">
+                    <span class="absolute -left-[45px] top-1.5 h-3 w-3 rounded-full border border-slate-600 bg-slate-900 group-hover:bg-slate-600 transition-colors shadow-[0_0_0_4px_rgba(15,23,42,1)]"></span>
+                    <h3 class="text-xl font-bold text-white mb-1">Technicien / Vendeur</h3>
+                    <div class="flex flex-col sm:flex-row sm:items-center text-sm text-slate-500 mb-4 font-medium">
+                        <span class="">Boutique de téléphonie</span>
+                        <span class="mx-2 hidden sm:inline text-slate-700">•</span>
                         <span>Juin - Août 2019</span>
-                        <span class="mx-2 hidden sm:inline">•</span>
-                        <span>Cambodge</span>
                     </div>
-                    <p class="text-slate-300">Réparation de téléphones et gestion des données clients. Première expérience technique et relation client.</p>
+                    <p class="text-slate-300 font-light leading-relaxed">Réparation de téléphones et gestion des données clients. Première expérience technique et relation client.</p>
                 </div>
 
             </div>
@@ -331,24 +364,29 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold text-white mb-6">Travaillons ensemble</h2>
-            <p class="text-slate-400 mb-10 max-w-xl mx-auto">
-                Je suis actuellement à la recherche d'une opportunité en alternance ou d'un stage pour poursuivre mon parcours en <strong>L3 MIAGE</strong>. N'hésitez pas à me contacter !
+    <section id="contact" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-primary/5 -skew-y-3 transform origin-bottom-right scale-110"></div>
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-4xl font-bold text-white mb-6">Travaillons ensemble</h2>
+            <p class="text-slate-400 mb-12 max-w-xl mx-auto text-lg font-light">
+                Je suis actuellement à la recherche d'une opportunité en alternance ou d'un stage pour poursuivre mon parcours en <strong>L3 MIAGE</strong>.
             </p>
             
-            <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-                <a href="mailto:tolmora.pro@gmail.com" class="p-6 bg-slate-800 rounded-xl hover:bg-primary hover:text-white transition-all group border border-slate-700">
-                    <i data-lucide="mail" class="w-8 h-8 mx-auto mb-3 text-primary group-hover:text-white transition-colors"></i>
-                    <h3 class="font-semibold mb-1">Email</h3>
-                    <p class="text-sm opacity-80">tolmora.pro@gmail.com</p>
+            <div class="grid md:grid-cols-2 gap-6 max-w-xl mx-auto">
+                <a href="mailto:tolmora.pro@gmail.com" class="p-8 glass-card rounded-2xl hover:bg-slate-800/80 transition-all group hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-white text-primary transition-colors">
+                        <i data-lucide="mail" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-white mb-1">Email</h3>
+                    <p class="text-slate-400 text-sm">tolmora.pro@gmail.com</p>
                 </a>
                 
-                <a href="tel:0749680589" class="p-6 bg-slate-800 rounded-xl hover:bg-primary hover:text-white transition-all group border border-slate-700">
-                    <i data-lucide="phone" class="w-8 h-8 mx-auto mb-3 text-primary group-hover:text-white transition-colors"></i>
-                    <h3 class="font-semibold mb-1">Téléphone</h3>
-                    <p class="text-sm opacity-80">07 49 68 05 89</p>
+                <a href="tel:0749680589" class="p-8 glass-card rounded-2xl hover:bg-slate-800/80 transition-all group hover:-translate-y-1">
+                     <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-white text-primary transition-colors">
+                        <i data-lucide="phone" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-white mb-1">Téléphone</h3>
+                    <p class="text-slate-400 text-sm">07 49 68 05 89</p>
                 </a>
             </div>
         </div>
@@ -368,9 +406,11 @@
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 20) {
-                navbar.classList.add('bg-slate-900/90', 'backdrop-blur-md', 'shadow-lg');
+                navbar.classList.add('bg-slate-900/90', 'backdrop-blur-md', 'shadow-lg', 'border-slate-800');
+                navbar.classList.remove('border-transparent');
             } else {
-                navbar.classList.remove('bg-slate-900/90', 'backdrop-blur-md', 'shadow-lg');
+                navbar.classList.remove('bg-slate-900/90', 'backdrop-blur-md', 'shadow-lg', 'border-slate-800');
+                navbar.classList.add('border-transparent');
             }
         });
 
@@ -383,5 +423,3 @@
     </script>
 </body>
 </html>
-
-
