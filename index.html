@@ -113,10 +113,11 @@
             
             <!-- Profile Visual -->
             <div class="relative flex justify-center md:justify-end">
-                <div class="relative w-64 h-64 md:w-80 md:h-80 bg-slate-800 rounded-2xl rotate-3 border border-slate-700 overflow-hidden shadow-2xl">
-                    <<img src="assets/images/hi1.png" alt="Tol Mora" class="object-cover w-full h-full opacity-90 hover:opacity-100 transition-opacity" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'absolute inset-0 flex items-center justify-center bg-slate-900 text-slate-700\'><i data-lucide=\'user\' class=\'w-32 h-32 opacity-50\'></i></div>'">
+                <!-- Removed card styling (bg, border, rotate) and increased size slightly for the character -->
+                <div class="relative w-64 h-64 md:w-96 md:h-96">
+                    <img src="assets/images/hi1.png" alt="Tol Mora" class="object-contain w-full h-full drop-shadow-2xl hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'absolute inset-0 flex items-center justify-center bg-slate-900 text-slate-700 rounded-2xl\'><i data-lucide=\'user\' class=\'w-32 h-32 opacity-50\'></i></div>'">
                 </div>
-                <div class="absolute -bottom-6 -left-6 glass-card p-4 rounded-xl shadow-lg animate-bounce-slow">
+                <div class="absolute bottom-0 left-0 md:-bottom-6 md:-left-6 glass-card p-4 rounded-xl shadow-lg animate-bounce-slow">
                     <div class="flex items-center gap-3">
                         <div class="p-2 bg-green-500/20 rounded-lg text-green-400">
                             <i data-lucide="code-2" class="w-6 h-6"></i>
@@ -382,6 +383,3 @@
     </script>
 </body>
 </html>
-
-
-
