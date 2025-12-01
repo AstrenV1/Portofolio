@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
         body {
             font-family: 'Inter', sans-serif;
@@ -29,9 +29,17 @@
         }
         
         .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(10px);
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Gradient Text Style from Index */
+        .text-gradient {
+            background: linear-gradient(to right, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     </style>
     <script>
@@ -43,7 +51,8 @@
                         primary: '#3b82f6', // blue-500
                         secondary: '#64748b', // slate-500
                         dark: '#0f172a', // slate-900
-                        emerald: '#10b981', // emerald-500 (Used for success state, though Unity is often associated with dark/grey/white, we'll keep the theme consistent)
+                        emerald: '#10b981', // emerald-500
+                        amber: '#fbbf24', // amber-400
                     }
                 }
             }
@@ -52,31 +61,46 @@
 </head>
 <body class="bg-dark text-slate-300 antialiased selection:bg-primary selection:text-white">
 
-    <!-- Navigation (Simplified for subpage) -->
-    <nav class="fixed w-full z-50 top-0 bg-slate-900/90 backdrop-blur-md shadow-lg transition-all duration-300" id="navbar">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 bg-slate-900/90 backdrop-blur-md shadow-lg transition-all duration-300 border-b border-slate-800" id="navbar">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-white tracking-tight">TM<span class="text-primary">.</span></a>
+            <a href="index.html" class="text-xl font-bold text-white tracking-tight hover:opacity-80 transition-opacity">TM<span class="text-primary">.</span></a>
             
-            <a href="index.html" class="flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors">
-                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            <a href="index.html" class="flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors group">
+                <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-1 transition-transform"></i>
                 Retour au Portfolio
             </a>
         </div>
     </nav>
 
-    <!-- Header / Hero -->
-    <header class="pt-32 pb-12 relative overflow-hidden">
-        <!-- Background Decor (Unity often uses dark greys, keeping the blue/emerald theme for consistency) -->
-        <div class="absolute top-0 right-0 -mr-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 -ml-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
+    <!-- Header / Hero (Aligned Left) -->
+    <header class="pt-36 pb-20 relative overflow-hidden">
+        <!-- Background Decor -->
+        <div class="absolute top-0 right-0 -mr-20 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 w-[400px] h-[400px] bg-emerald/5 rounded-full blur-[100px]"></div>
 
-        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-            <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 text-xs font-medium tracking-wider text-emerald-400 uppercase bg-emerald-500/10 rounded-full border border-emerald-500/20">
-                <i data-lucide="check-circle" class="w-3 h-3"></i> Certification Validée
+        <div class="max-w-6xl mx-auto px-6 relative z-10 text-left">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 mb-8 text-xs font-semibold tracking-wider text-emerald-400 uppercase bg-emerald-500/10 rounded-full border border-emerald-500/20">
+                <i data-lucide="check-circle" class="w-3 h-3"></i> 
+                Certification Validée
             </div>
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Certification Unity</h1>
-            <p class="text-lg text-slate-400">Junior Programmer Pathway</p>
-            <p class="mt-4 text-sm text-slate-500 italic">Fiche complète de synthèse pour la présentation orale</p>
+            
+            <!-- Title with Gradient -->
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
+                Certification <span class="text-gradient">Unity (C#)</span>
+            </h1>
+            
+            <!-- Subtitle -->
+            <p class="text-xl text-slate-400 max-w-2xl font-light leading-relaxed">
+                Apprendre le C# (Unity) avec TUTO UNITY FR
+            </p>
+            
+            <!-- Meta Note -->
+            <div class="mt-6 flex items-center gap-3 text-sm text-slate-500">
+                <span class="w-8 h-px bg-slate-700"></span>
+                <span class="italic">Fiche complète de synthèse pour la présentation orale</span>
+            </div>
         </div>
     </header>
 
@@ -86,41 +110,55 @@
         <!-- Top Info Grid -->
         <div class="grid md:grid-cols-3 gap-6 mb-8">
             <!-- Info Card -->
-            <div class="glass-card p-6 rounded-xl border-l-4 border-primary">
-                <h3 class="text-white font-semibold mb-2 flex items-center gap-2">
+            <div class="glass-card p-8 rounded-2xl border-l-4 border-primary hover:bg-slate-800/50 transition-colors">
+                <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
                     <i data-lucide="info" class="text-primary w-4 h-4"></i> Infos Générales
                 </h3>
-                <ul class="space-y-3 text-sm">
+                <ul class="space-y-4 text-sm">
                     <li>
-                        <span class="block text-slate-500 text-xs">Formation</span>
-                        <span class="text-slate-200">Unity Junior Programmer</span>
+                        <span class="block text-slate-500 text-xs uppercase tracking-wider mb-1">Formation</span>
+                        <span class="text-white font-medium">Apprendre le C# (Unity)</span>
                     </li>
                     <li>
-                        <span class="block text-slate-500 text-xs">Site</span>
-                        <span class="text-slate-200">learn.unity.com</span>
+                        <span class="block text-slate-500 text-xs uppercase tracking-wider mb-1">Plateforme</span>
+                        <span class="text-white font-medium">Cursa / TUTO UNITY FR</span>
                     </li>
                     <li>
-                        <a href="https://learn.unity.com" target="_blank" class="inline-flex items-center gap-1 text-primary hover:text-blue-400 underline decoration-dotted">
-                            Accéder au site <i data-lucide="external-link" class="w-3 h-3"></i>
-                        </a>
+                        <span class="block text-slate-500 text-xs uppercase tracking-wider mb-1">Durée</span>
+                        <span class="text-white font-medium">02 heures et 39 minutes</span>
                     </li>
                 </ul>
             </div>
 
             <!-- Sommaire Card -->
-            <div class="glass-card p-6 rounded-xl border-l-4 border-purple-500 md:col-span-2">
-                <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
+            <div class="glass-card p-8 rounded-2xl border-l-4 border-purple-500 md:col-span-2 hover:bg-slate-800/50 transition-colors">
+                <h3 class="text-white font-semibold mb-6 flex items-center gap-2">
                     <i data-lucide="list" class="text-purple-400 w-4 h-4"></i> Sommaire de la formation
                 </h3>
-                <div class="grid sm:grid-cols-2 gap-4">
-                    <ul class="space-y-2 text-sm text-slate-300">
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-purple-500"></div> Introduction au moteur Unity</li>
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-purple-500"></div> Programmation C# (Scripts, Classes)</li>
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-purple-500"></div> Physique et Collisions</li>
+                <div class="grid sm:grid-cols-2 gap-x-8 gap-y-4">
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-center gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-purple-500 shrink-0"></span> 
+                            Bases du langage C#
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-purple-500 shrink-0"></span> 
+                            Scripting dans Unity
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-purple-500 shrink-0"></span> 
+                            Variables et Fonctions
+                        </li>
                     </ul>
-                    <ul class="space-y-2 text-sm text-slate-300">
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-purple-500"></div> Gameplay & Mécaniques de jeu</li>
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-purple-500"></div> Interface Utilisateur (UI) & Audio</li>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-center gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-purple-500 shrink-0"></span> 
+                            Logique de programmation
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-purple-500 shrink-0"></span> 
+                            Création de comportements de jeu
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -128,53 +166,54 @@
 
         <!-- Presentation Section -->
         <section class="mb-8">
-            <div class="glass-card p-8 rounded-xl">
-                <h2 class="text-2xl font-bold text-white mb-4">Présentation de la formation</h2>
-                <p class="leading-relaxed text-slate-300">
-                    Unity Learn est la plateforme éducative officielle du moteur de jeu Unity. Elle propose des parcours complets pour apprendre le développement de jeux vidéo.
-                    Le parcours "Junior Programmer" est conçu pour enseigner le code à travers la pratique.
-                </p>
-                <p class="leading-relaxed text-slate-300 mt-4">
-                    Cette formation guide l'étudiant de la première ligne de code jusqu'à la création de prototypes jouables, en couvrant l'ensemble du cycle de développement : de la logique de programmation en C# à l'intégration d'assets graphiques et sonores.
-                </p>
+            <div class="glass-card p-10 rounded-2xl">
+                <h2 class="text-2xl font-bold text-white mb-6">Présentation de la formation</h2>
+                <div class="space-y-4 text-slate-300 leading-relaxed font-light text-lg">
+                    <p>
+                        Cette formation, suivie sur la plateforme d'apprentissage <strong>Cursa</strong>, se concentre sur l'apprentissage du langage C# appliqué au moteur de jeu Unity. Elle est conçue pour donner les bases essentielles de la programmation orientée objet dans un contexte de développement de jeux vidéo.
+                    </p>
+                    <p>
+                        Le cours couvre les fondamentaux du C#, de la syntaxe de base à la création de scripts complexes pour gérer les interactions, la physique et les mécaniques de jeu au sein de l'environnement Unity.
+                    </p>
+                </div>
             </div>
         </section>
 
         <!-- Project & Needs Grid -->
         <div class="grid md:grid-cols-2 gap-6 mb-8">
             <!-- Project Link -->
-            <div class="glass-card p-8 rounded-xl">
+            <div class="glass-card p-8 rounded-2xl hover:bg-slate-800/50 transition-colors">
                 <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
                     <i data-lucide="target" class="text-red-400"></i> Projet Personnel & Pro
                 </h3>
-                <p class="text-slate-300 mb-4">
-                    J'aime les jeux vidéo et je suis passionné par la programmation. Mon objectif principal est d'apprendre concrètement <strong>comment programmer un jeu</strong>.
+                <p class="text-slate-300 mb-6 font-light">
+                    J'aime les jeux vidéo et je suis passionné par la programmation. Mon objectif principal est d'apprendre concrètement <strong class="text-white font-medium">comment programmer un jeu</strong>.
                 </p>
-                <p class="text-slate-300 text-sm border-l-2 border-slate-700 pl-4">
+                <div class="text-slate-400 text-sm border-l-2 border-slate-700 pl-4 py-1 italic">
                     Au-delà du jeu, cette certification renforce ma maîtrise du langage <strong>C#</strong>, qui est également au cœur du développement logiciel d'entreprise (écosystème .NET), créant ainsi un pont entre ma passion et mes compétences professionnelles.
-                </p>
+                </div>
             </div>
 
             <!-- Needs -->
-            <div class="glass-card p-8 rounded-xl">
+            <div class="glass-card p-8 rounded-2xl hover:bg-slate-800/50 transition-colors">
                 <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
                     <i data-lucide="check-circle-2" class="text-green-400"></i> Besoins de formation
                 </h3>
-                <p class="text-slate-300 mb-4">
+                <p class="text-slate-300 mb-6 font-light">
                     Unity répond parfaitement à mon besoin de combiner logique algorithmique et rendu visuel interactif.
                 </p>
-                <ul class="space-y-3">
+                <ul class="space-y-4">
                     <li class="flex items-start gap-3 text-slate-300">
-                        <i data-lucide="code-2" class="w-5 h-5 text-slate-500 mt-0.5"></i>
-                        Comprendre la Programmation Orientée Objet (POO)
+                        <div class="p-1 bg-slate-800 rounded text-slate-400 mt-0.5"><i data-lucide="code-2" class="w-4 h-4"></i></div>
+                        <span>Comprendre la Programmation Orientée Objet (POO)</span>
                     </li>
                     <li class="flex items-start gap-3 text-slate-300">
-                        <i data-lucide="box" class="w-5 h-5 text-slate-500 mt-0.5"></i>
-                        Manipuler des objets dans un espace 3D
+                        <div class="p-1 bg-slate-800 rounded text-slate-400 mt-0.5"><i data-lucide="box" class="w-4 h-4"></i></div>
+                        <span>Manipuler des objets dans un espace 3D</span>
                     </li>
                     <li class="flex items-start gap-3 text-slate-300">
-                        <i data-lucide="cpu" class="w-5 h-5 text-slate-500 mt-0.5"></i>
-                        Développer une rigueur logique (Game Loop, Events)
+                        <div class="p-1 bg-slate-800 rounded text-slate-400 mt-0.5"><i data-lucide="cpu" class="w-4 h-4"></i></div>
+                        <span>Développer une rigueur logique (Game Loop, Events)</span>
                     </li>
                 </ul>
             </div>
@@ -183,40 +222,40 @@
         <!-- Learning & Alternatives Grid -->
         <div class="grid md:grid-cols-3 gap-6 mb-8">
             <!-- Apports (2 cols) -->
-            <div class="glass-card p-8 rounded-xl md:col-span-2">
-                <h3 class="text-xl font-bold text-white mb-4">Apports de la formation</h3>
+            <div class="glass-card p-8 rounded-2xl md:col-span-2">
+                <h3 class="text-xl font-bold text-white mb-6">Apports de la formation</h3>
                 <div class="grid sm:grid-cols-2 gap-6">
-                    <div class="bg-slate-800/50 p-4 rounded-lg">
-                        <i data-lucide="terminal" class="text-primary mb-2"></i>
-                        <h4 class="text-white font-medium mb-1">Technique</h4>
-                        <p class="text-sm text-slate-400">Maîtrise de l'environnement Visual Studio et du langage C# appliqué.</p>
+                    <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700/50">
+                        <i data-lucide="terminal" class="text-primary mb-3 w-6 h-6"></i>
+                        <h4 class="text-white font-medium mb-2">Technique</h4>
+                        <p class="text-sm text-slate-400 leading-relaxed">Maîtrise de l'environnement Visual Studio et du langage C# appliqué.</p>
                     </div>
-                    <div class="bg-slate-800/50 p-4 rounded-lg">
-                        <i data-lucide="layers" class="text-primary mb-2"></i>
-                        <h4 class="text-white font-medium mb-1">Conception</h4>
-                        <p class="text-sm text-slate-400">Compréhension de l'architecture d'un projet logiciel complexe et gestion des ressources.</p>
+                    <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700/50">
+                        <i data-lucide="layers" class="text-primary mb-3 w-6 h-6"></i>
+                        <h4 class="text-white font-medium mb-2">Conception</h4>
+                        <p class="text-sm text-slate-400 leading-relaxed">Compréhension de l'architecture d'un projet logiciel complexe et gestion des ressources.</p>
                     </div>
                 </div>
-                <p class="mt-4 text-sm text-slate-400 italic">Ces compétences sont transversales et s'appliquent à tout type de développement logiciel moderne.</p>
+                <p class="mt-6 text-sm text-slate-500 italic">Ces compétences sont transversales et s'appliquent à tout type de développement logiciel moderne.</p>
             </div>
 
             <!-- Alternatives (1 col) -->
-            <div class="glass-card p-6 rounded-xl bg-slate-800/30">
-                <h3 class="text-white font-bold mb-4 flex items-center gap-2">
+            <div class="glass-card p-8 rounded-2xl bg-slate-800/30">
+                <h3 class="text-white font-bold mb-6 flex items-center gap-2">
                     <i data-lucide="globe" class="text-secondary"></i> Alternatives
                 </h3>
                 <p class="text-sm text-slate-400 mb-4">D'autres moteurs de jeux existent :</p>
-                <ul class="space-y-2 text-sm text-slate-300">
-                    <li class="flex items-center gap-2 border-b border-slate-700 pb-2">
+                <ul class="space-y-3 text-sm text-slate-300">
+                    <li class="flex items-center gap-3 border-b border-slate-700/50 pb-2">
                         <i data-lucide="arrow-up-right" class="w-3 h-3 text-primary"></i> Unreal Engine (C++)
                     </li>
-                    <li class="flex items-center gap-2 border-b border-slate-700 pb-2">
+                    <li class="flex items-center gap-3 border-b border-slate-700/50 pb-2">
                         <i data-lucide="arrow-up-right" class="w-3 h-3 text-primary"></i> Godot (GDScript)
                     </li>
-                    <li class="flex items-center gap-2 border-b border-slate-700 pb-2">
+                    <li class="flex items-center gap-3 border-b border-slate-700/50 pb-2">
                         <i data-lucide="arrow-up-right" class="w-3 h-3 text-primary"></i> GameMaker
                     </li>
-                    <li class="flex items-center gap-2">
+                    <li class="flex items-center gap-3">
                         <i data-lucide="arrow-up-right" class="w-3 h-3 text-primary"></i> Udemy (Cours privés)
                     </li>
                 </ul>
@@ -225,16 +264,20 @@
 
         <!-- Organisation & Feedback -->
         <div class="grid md:grid-cols-2 gap-6 mb-12">
-            <div class="glass-card p-8 rounded-xl">
-                <h3 class="text-lg font-bold text-white mb-3">Rythme & Organisation</h3>
-                <p class="text-slate-300 mb-6">
-                    Je travaille en autonomie totale sur Unity Learn. La plateforme propose des modules découpés, ce qui me permet d'avancer projet par projet, à mon propre rythme.
-                </p>
+            <div class="glass-card p-8 rounded-2xl">
+                <div class="mb-8">
+                    <h3 class="text-lg font-bold text-white mb-2">Rythme & Organisation</h3>
+                    <p class="text-slate-300 font-light">
+                        J'ai suivi cette formation en autonomie complète. La structure du cours en modules vidéo m'a permis d'avancer à mon propre rythme et de revoir les concepts complexes.
+                    </p>
+                </div>
                 
-                <h3 class="text-lg font-bold text-white mb-3">Coût</h3>
-                <p class="text-slate-300 text-sm">
-                    La formation via Unity Learn est majoritairement <strong>gratuite</strong>. Le logiciel Unity est également gratuit pour les étudiants et les usage personnels (version Personal).
-                </p>
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-2">Coût</h3>
+                    <p class="text-slate-300 text-sm font-light">
+                        La formation a été suivie via l'application Cursa, qui agrège des contenus éducatifs gratuits.
+                    </p>
+                </div>
             </div>
 
             <div class="glass-card p-8 rounded-xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-700">
